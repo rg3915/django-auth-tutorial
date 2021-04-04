@@ -107,3 +107,28 @@ touch myproject/accounts/templates/accounts/login.html
 
 A partir de https://github.com/rg3915/coreui-django-boilerplate-v2/blob/main/myproject/core/templates/login.html
 
+Editando accounts/signup.html
+
+
+Editando accounts/urls.py
+
+from myproject.accounts.views import signup
+
+    path('signup/', signup, name='signup'),
+
+
+Editando accounts/views.py
+
+
+Editando accounts/forms.py
+
+touch myproject/accounts/forms.py
+
+
+Editando accounts/templates/accounts/signup.html
+
+touch myproject/accounts/templates/accounts/signup.html
+
+
+A partir de https://github.com/rg3915/coreui-django-boilerplate-v2/blob/main/myproject/core/templates/register.html
+

@@ -24,3 +24,22 @@ python contrib/env_gen.py
 python manage.py migrate
 python manage.py createsuperuser --username='admin' --email=''
 ```
+
+## Links
+
+https://simpleisbetterthancomplex.com/tutorial/2016/09/19/how-to-create-password-reset-view.html
+
+https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
+
+https://simpleisbetterthancomplex.com/tips/2016/08/04/django-tip-9-password-change-form.html
+
+https://github.com/egorsmkv/simple-django-login-and-register
+
+https://github.com/Antonio-Neves/Custom-User-Django-pt
+
+https://github.com/django/django/tree/main/django/contrib/admin/templates/registration
+
+https://github.com/django/django/blob/main/django/contrib/auth/views.py
+
+https://github.com/django/django/blob/main/django/contrib/auth/forms.py
+
