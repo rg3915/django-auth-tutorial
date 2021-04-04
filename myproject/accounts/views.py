@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.shortcuts import redirect, render
@@ -23,12 +22,6 @@ def signup(request):
             # Faz login
             auth_login(request, user)
             return redirect(reverse_lazy('core:index'))
-        else:
-            msg_error = form.errors
-            print(msg_error)
-            messages.error(request, msg_error)
-            # return redirect(reverse_lazy('accounts:signup'))
-            return render(request, 'accounts/signup.html', context)
 
     return render(request, 'accounts/signup.html', context)
 
