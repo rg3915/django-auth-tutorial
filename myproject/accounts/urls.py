@@ -4,7 +4,7 @@ from django.urls import path
 
 from myproject.accounts import views as v
 
-app_name = 'accounts'
+# app_name = 'accounts'
 
 
 urlpatterns = [

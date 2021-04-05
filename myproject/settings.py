@@ -117,6 +117,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_URL = 'accounts:login'
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'core:index'
 LOGOUT_REDIRECT_URL = 'core:index'

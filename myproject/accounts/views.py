@@ -40,7 +40,7 @@ def signup(request):
 
 class SignUpView(CreateView):
     form_class = SignupForm
-    success_url = reverse_lazy('accounts:login')
+    success_url = reverse_lazy('login')
     template_name = 'accounts/signup.html'
 
 
@@ -61,7 +61,7 @@ def signup_email(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject, message)
-            return redirect('accounts:account_activation_sent')
+            return redirect('account_activation_sent')
 
     return render(request, 'accounts/signup_email.html', context)
 
