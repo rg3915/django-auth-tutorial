@@ -31,9 +31,11 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'myproject.accounts',
+    'django.contrib.admin',
+    'django.contrib.auth',
     ...
     'django_extensions',
-    'myproject.accounts',
     'myproject.core',
 ]
 
@@ -131,4 +133,22 @@ touch myproject/accounts/templates/accounts/signup.html
 
 
 A partir de https://github.com/rg3915/coreui-django-boilerplate-v2/blob/main/myproject/core/templates/register.html
+
+
+Editando accounts/templates/accounts/signup_email.html
+
+cp myproject/accounts/templates/accounts/signup.html myproject/accounts/templates/accounts/signup_email.html
+
+
+
+pip install django-utils-six
+
+
+touch myproject/accounts/templates/accounts/account_activation_sent.html
+
+
+
+touch myproject/accounts/templates/registration/password_reset_confirm.html
+
+touch myproject/accounts/templates/registration/password_reset_complete.html
 

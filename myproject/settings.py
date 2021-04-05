@@ -26,6 +26,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'myproject.accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -34,7 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'widget_tweaks',
-    'myproject.accounts',
     'myproject.core',
 ]
 
@@ -49,6 +49,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'myproject.urls'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 TEMPLATES = [
     {
