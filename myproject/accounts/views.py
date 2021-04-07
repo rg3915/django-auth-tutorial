@@ -72,16 +72,20 @@ def account_activation_sent(request):
 
 
 class PasswordResetConfirm(PasswordResetConfirmView):
-    pass
+
+    def form_valid(self, form):
+        self.user.is_active = True
+        self.user.save()
+        return super(PasswordResetConfirm, self).form_valid(form)
 
 
 class PasswordResetComplete(PasswordResetCompleteView):
-    pass
+    ...
 
 
 class PasswordReset(PasswordResetView):
-    pass
+    ...
 
 
 class PasswordResetDone(PasswordResetDoneView):
-    pass
+    ...
