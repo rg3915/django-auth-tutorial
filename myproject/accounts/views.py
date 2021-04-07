@@ -5,6 +5,7 @@ from django.contrib.auth.views import (
     PasswordChangeView,
     PasswordResetCompleteView,
     PasswordResetConfirmView,
+    PasswordResetDoneView,
     PasswordResetView
 )
 from django.contrib.sites.shortcuts import get_current_site
@@ -70,5 +71,17 @@ def account_activation_sent(request):
     return render(request, 'accounts/account_activation_sent.html')
 
 
-# class PasswordResetComplete(PasswordResetCompleteView):
-#     template_name = 'registration/password_reset_complete.html'
+class PasswordResetConfirm(PasswordResetConfirmView):
+    pass
+
+
+class PasswordResetComplete(PasswordResetCompleteView):
+    pass
+
+
+class PasswordReset(PasswordResetView):
+    pass
+
+
+class PasswordResetDone(PasswordResetDoneView):
+    pass

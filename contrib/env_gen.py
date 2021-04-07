@@ -22,13 +22,13 @@ ALLOWED_HOSTS=127.0.0.1, .localhost
 #DB_PASSWORD=%s
 #DB_HOST=localhost
 
-#DEFAULT_FROM_EMAIL=
 #EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-#EMAIL_HOST=
-#EMAIL_PORT=
-#EMAIL_HOST_USER=
-#EMAIL_HOST_PASSWORD=
-#EMAIL_USE_TLS=True
+DEFAULT_FROM_EMAIL=noreply@admin.com
+EMAIL_HOST=0.0.0.0
+EMAIL_PORT=1025
+EMAIL_HOST_USER=noreply@admin.com
+EMAIL_HOST_PASSWORD=p4ssw0rd
+EMAIL_USE_TLS=False
 """.strip() % (secret_key, password)
 
 # Writing our configuration file to '.env'
