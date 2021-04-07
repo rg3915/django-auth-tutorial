@@ -70,5 +70,5 @@ def account_activation_sent(request):
     return render(request, 'accounts/account_activation_sent.html')
 
 
-class PasswordResetComplete(PasswordResetCompleteView):
-    template_name = 'registration/password_reset_complete.html'
+# class PasswordResetComplete(PasswordResetCompleteView):
+#     template_name = 'registration/password_reset_complete.html'
