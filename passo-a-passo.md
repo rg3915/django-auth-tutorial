@@ -68,7 +68,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 
 
-LOGIN_URL = 'login'
+# LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'core:index'
 LOGOUT_REDIRECT_URL = 'core:index'
 ```
@@ -152,6 +152,8 @@ urlpatterns = [
 ]
 ```
 
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#the-login-required-decorator
+
 Editando `core/views.py`
 
 ```python
@@ -170,13 +172,16 @@ def index(request):
 
 ![101_login_logout.png](img/101_login_logout.png)
 
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.LoginView
 
+https://github.com/django/django/blob/main/django/contrib/auth/views.py#L40
 
 Editando `accounts/urls.py`
 
 ```
 touch myproject/accounts/urls.py
 ```
+
 
 O template padrão é `registration/login.html`, mas vamos mudar
 
@@ -218,6 +223,13 @@ Em `nav.html` corrija
 ```html
 href="{% url 'logout' %}">Logout</a>
 ```
+
+Em `settings.py` descomente
+
+```python
+LOGIN_URL = 'login'
+```
+
 
 > Mostrar a aplicação rodando com login e logout.
 
