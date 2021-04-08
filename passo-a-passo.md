@@ -453,6 +453,9 @@ href="{% url 'login' %}
 > Mostrar a aplicação rodando com **cadastro normal** e **cadastro com senha.**
 
 
+![103_change_password.png](img/103_change_password.png)
+
+
 Em `accounts/views.py`
 
 ```python
@@ -493,6 +496,7 @@ Arrumar o link em `nav.html`
 <a class="nav-link" href="{% url 'password_change' %}">Trocar a senha</a>
 ```
 
+![104_reset_password.png](img/104_reset_password.png)
 
 Em `accounts/views.py`
 
@@ -549,6 +553,18 @@ Em `accounts/urls.py`
         name='password_reset_complete'
     ),
     ...
+```
+
+Arrumar o link em `login.html`
+
+```html
+<a class="btn btn-link px-0" href="{% url 'password_reset' %}">Esqueci minha senha</a>
+```
+
+Arrumar o link em `registration/password_reset_email.html`
+
+```html
+{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
 ```
 
 ---
