@@ -27,9 +27,9 @@ python manage.py createsuperuser --username='admin' --email=''
 
 ### Configurar settings.py
 
-```
+```python
 INSTALLED_APPS = [
-    'myproject.accounts',
+    'myproject.accounts',  # <---
     'django.contrib.admin',
     'django.contrib.auth',
     ...
@@ -94,7 +94,7 @@ docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
 
 ### Configurar settings.py
 
-```
+```python
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
