@@ -170,3 +170,32 @@ touch myproject/accounts/templates/registration/password_reset_confirm.html
 
 touch myproject/accounts/templates/registration/password_reset_complete.html
 
+
+
+---
+
+registration/password_reset_form.html
+PasswordResetView
+password_reset/
+
+registration/password_reset_email.html
+registration/password_reset_subject.txt
+
+
+
+registration/password_reset_done.html
+PasswordResetDoneView
+password_reset/done/
+
+
+registration/password_reset_confirm.html
+PasswordResetConfirmView
+reset/<uidb64>/<token>/
+
+
+registration/password_reset_complete.html
+PasswordResetCompleteView
+reset/done/
+
+
+

@@ -25,6 +25,26 @@ python manage.py migrate
 python manage.py createsuperuser --username='admin' --email=''
 ```
 
+### Configurar settings.py
+
+```
+INSTALLED_APPS = [
+    'myproject.accounts',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    ...
+    'django_extensions',
+    'widget_tweaks',
+    'myproject.core',
+]
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'core:index'
+LOGOUT_REDIRECT_URL = 'core:index'
+```
+
+
+
 ## Estrutura
 
 ### Login
@@ -62,6 +82,29 @@ python manage.py createsuperuser --username='admin' --email=''
 ### Esqueci minha senha
 
 ![04_forgot_password.png](img/04_forgot_password.png)
+
+
+## MailHog
+
+Rodar [MailHog](https://github.com/mailhog/MailHog) via Docker.
+
+```
+docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
+```
+
+### Configurar settings.py
+
+```
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
+EMAIL_HOST = config('EMAIL_HOST', '0.0.0.0')  # localhost
+EMAIL_PORT = config('EMAIL_PORT', 1025, cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
+```
+
 
 
 ## Links
