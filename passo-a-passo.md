@@ -381,7 +381,7 @@ class SignupEmailForm(forms.ModelForm):
 
 
 
-Em accounts/views.py
+Em `accounts/views.py`
 
 ```python
 # accounts/views.py
@@ -395,7 +395,7 @@ class MyPasswordChangeDone(PasswordChangeDoneView):
         return redirect(reverse_lazy('login'))
 ```
 
-Em accounts/urls.py
+Em `accounts/urls.py`
 
 ```python
 # accounts/urls.py
@@ -413,7 +413,7 @@ Em accounts/urls.py
     ...
 ```
 
-Em accounts/views.py
+Em `accounts/views.py`
 
 ```python
 # accounts/views.py
@@ -442,7 +442,7 @@ class MyPasswordResetComplete(PasswordResetCompleteView):
 
 ```
 
-Em accounts/urls.py
+Em `accounts/urls.py`
 
 ```python
 # accounts/urls.py
