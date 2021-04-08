@@ -140,7 +140,11 @@ def index(request):
     return render(request, template_name)
 ```
 
-Editando accounts/urls.py
+Editando `accounts/urls.py`
+
+```
+touch myproject/accounts/urls.py
+```
 
 O template padrão é `registration/login.html`, mas vamos mudar
 
@@ -307,8 +311,7 @@ class MyPasswordResetComplete(PasswordResetCompleteView):
     ...
 ```
 
-
-Editando accounts/forms.py
+Editando `accounts/forms.py`
 
 ```
 touch myproject/accounts/forms.py
@@ -375,6 +378,8 @@ class SignupEmailForm(forms.ModelForm):
             'email',
         )
 ```
+
+
 
 Em accounts/views.py
 
