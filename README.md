@@ -46,25 +46,6 @@ LOGOUT_REDIRECT_URL = 'core:index'
 Leia o [passo-a-passo.md](passo-a-passo.md).
 
 
-## Estrutura
-
-### Login
-
-![101_login_logout.png](img/101_login_logout.png)
-
-### Cadastro
-
-![102_signup.png](img/102_signup.png)
-
-### Trocar senha
-
-![103_change_password.png](img/103_change_password.png)
-
-### Esqueci minha senha
-
-![104_reset_password.png](img/104_reset_password.png)
-
-
 
 ## Telas
 
@@ -83,6 +64,27 @@ Leia o [passo-a-passo.md](passo-a-passo.md).
 ### Esqueci minha senha
 
 ![04_forgot_password.png](img/04_forgot_password.png)
+
+
+
+## Estrutura
+
+### Login
+
+![101_login_logout.png](img/101_login_logout.png)
+
+### Cadastro
+
+![102_signup.png](img/102_signup.png)
+
+### Trocar senha
+
+![103_change_password.png](img/103_change_password.png)
+
+### Esqueci minha senha
+
+![104_reset_password.png](img/104_reset_password.png)
+
 
 
 ## MailHog
