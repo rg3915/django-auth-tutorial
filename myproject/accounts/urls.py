@@ -25,6 +25,16 @@ urlpatterns = [
         name='account_activation_sent'
     ),
     path(
+        'password_change/',
+        v.MyPasswordChange.as_view(),
+        name='password_change'
+    ),
+    path(
+        'password_change/done/',
+        v.MyPasswordChangeDone.as_view(),
+        name='password_change_done'
+    ),
+    path(
         'password_reset/',
         v.MyPasswordReset.as_view(),
         name='password_reset'

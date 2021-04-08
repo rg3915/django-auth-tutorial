@@ -1,6 +1,8 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.views import (
+    PasswordChangeDoneView,
+    PasswordChangeView,
     PasswordResetCompleteView,
     PasswordResetConfirmView,
     PasswordResetDoneView,
@@ -69,6 +71,16 @@ def signup_email(request):
 
 def account_activation_sent(request):
     return render(request, 'accounts/account_activation_sent.html')
+
+
+class MyPasswordChange(PasswordChangeView):
+    ...
+
+
+class MyPasswordChangeDone(PasswordChangeDoneView):
+
+    def get(self, request, *args, **kwargs):
+        return redirect(reverse_lazy('login'))
 
 
 class MyPasswordResetConfirm(PasswordResetConfirmView):
