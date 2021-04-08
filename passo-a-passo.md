@@ -100,7 +100,7 @@ from django.urls import include, path
 urlpatterns = [
     path('', include('myproject.core.urls', namespace='core')),
     # 
-    path('accounts/', include('myproject.accounts.urls')),  # sem namespace
+    # path('accounts/', include('myproject.accounts.urls')),  # sem namespace
     path('admin/', admin.site.urls),
 ]
 ```
@@ -140,6 +140,12 @@ def index(request):
     return render(request, template_name)
 ```
 
+### Login
+
+![101_login_logout.png](img/101_login_logout.png)
+
+
+
 Editando `accounts/urls.py`
 
 ```
@@ -170,8 +176,33 @@ urlpatterns = [
 ]
 ```
 
+Em `core/views.py` descomente `@login_required`.
 
-Editando accounts/urls.py
+Em `myproject/urls.py` descomente
+
+```
+...
+path('accounts/', include('myproject.accounts.urls')),  # sem namespace
+...
+```
+
+
+Em `nav.html` corrija
+
+```html
+href="{% url 'logout' %}">Logout</a>
+```
+
+> Mostrar a aplicação rodando com login e logout.
+
+
+### Cadastro
+
+![102_signup.png](img/102_signup.png)
+
+
+
+Editando `accounts/urls.py`
 
 ```python
 # accounts/urls.py
@@ -266,10 +297,15 @@ def signup(request):
     return render(request, 'accounts/signup.html', context)
 
 
+# Mostrar a aplicação rodando.
+
 class SignUpView(CreateView):
     form_class = SignupForm
     success_url = reverse_lazy('login')
     template_name = 'accounts/signup.html'
+
+
+# Mostrar a aplicação rodando.
 
 
 def send_mail_to_user(request, user):
@@ -384,6 +420,37 @@ class SignupEmailForm(forms.ModelForm):
         )
 ```
 
+Arrumar link em `accounts/login.html`
+
+```html
+href="{% url 'signup_email' %}">Cadastre-se</a>
+```
+
+Dar um `find` em todos templates e trocar
+
+```html
+href="{ url 'login' %}">Login</a>
+```
+por
+
+```html
+href="{% url 'login' %}">Login</a>
+```
+
+Arrumar o link em `email/account_activation_email.html`
+
+```html
+{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+```
+
+Arrumar o link em `registration/password_reset_complete.html`
+
+```html
+href="{% url 'login' %}
+```
+
+
+> Mostrar a aplicação rodando com **cadastro normal** e **cadastro com senha.**
 
 
 Em `accounts/views.py`
@@ -417,6 +484,15 @@ Em `accounts/urls.py`
     ),
     ...
 ```
+
+> Mostrar a aplicação rodando com a **troca de senha**.
+
+Arrumar o link em `nav.html`
+
+```html
+<a class="nav-link" href="{% url 'password_change' %}">Trocar a senha</a>
+```
+
 
 Em `accounts/views.py`
 
