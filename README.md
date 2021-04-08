@@ -25,7 +25,32 @@ python manage.py migrate
 python manage.py createsuperuser --username='admin' --email=''
 ```
 
+## Estrutura
+
+![101_login_logout.png]()
+
+![102_signup.png]()
+
+![103_change_password.png]()
+
+![104_reset_password.png]()
+
+
+
+## Telas
+
+![01_login.png]()
+
+![02_signup.png]()
+
+![03_change_password.png]()
+
+![04_forgot_password.png]()
+
+
 ## Links
+
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#module-django.contrib.auth.views
 
 https://simpleisbetterthancomplex.com/tutorial/2016/09/19/how-to-create-password-reset-view.html
 
@@ -43,3 +68,4 @@ https://github.com/django/django/blob/main/django/contrib/auth/views.py
 
 https://github.com/django/django/blob/main/django/contrib/auth/forms.py
 
+https://github.com/django/django/blob/main/django/contrib/auth/tokens.py
