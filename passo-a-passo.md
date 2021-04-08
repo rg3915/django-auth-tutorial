@@ -79,7 +79,7 @@ Estrutura do projeto
 tree
 ```
 
-Agora veja as imagens em README.md
+Agora veja as imagens em [README.md](README.md).
 
 Criando alguns arquivos
 
