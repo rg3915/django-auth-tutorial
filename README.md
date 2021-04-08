@@ -27,25 +27,25 @@ python manage.py createsuperuser --username='admin' --email=''
 
 ## Estrutura
 
-![101_login_logout.png]()
+![101_login_logout.png](img/101_login_logout.png)
 
-![102_signup.png]()
+![102_signup.png](img/102_signup.png)
 
-![103_change_password.png]()
+![103_change_password.png](img/103_change_password.png)
 
-![104_reset_password.png]()
+![104_reset_password.png](img/104_reset_password.png)
 
 
 
 ## Telas
 
-![01_login.png]()
+![01_login.png](img/01_login.png)
 
-![02_signup.png]()
+![02_signup.png](img/02_signup.png)
 
-![03_change_password.png]()
+![03_change_password.png](img/03_change_password.png)
 
-![04_forgot_password.png]()
+![04_forgot_password.png](img/04_forgot_password.png)
 
 
 ## Links
