@@ -197,7 +197,12 @@ Editando accounts/urls.py
     ...
 ```
 
-Editando accounts/tokens.py
+Editando `accounts/tokens.py`
+
+```
+touch myproject/accounts/tokens.py
+```
+
 
 ```python
 # accounts/tokens.py
@@ -216,7 +221,7 @@ account_activation_token = AccountActivationTokenGenerator()
 ```
 
 
-Editando accounts/views.py
+Editando `accounts/views.py`
 
 ```python
 # accounts/views.py
