@@ -83,11 +83,14 @@ Agora veja as imagens em [README.md](README.md).
 
 Criando alguns arquivos
 
+```
 touch myproject/core/urls.py
 touch myproject/accounts/urls.py
+```
 
 
-Editando urls.py
+
+Editando `urls.py`
 
 ```python
 # urls.py
@@ -102,7 +105,12 @@ urlpatterns = [
 ]
 ```
 
-Editando core/urls.py
+Editando `core/urls.py`
+
+```
+touch myproject/core/urls.py
+```
+
 
 ```python
 # core/urls.py
@@ -118,9 +126,10 @@ urlpatterns = [
 ]
 ```
 
-Editando core/views.py
+Editando `core/views.py`
 
 ```python
+# core/views.py
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
