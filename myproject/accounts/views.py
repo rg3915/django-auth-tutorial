@@ -1,8 +1,6 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.views import (
-    LoginView,
-    PasswordChangeView,
     PasswordResetCompleteView,
     PasswordResetConfirmView,
     PasswordResetDoneView,
@@ -49,6 +47,7 @@ def signup_email(request):
     form = SignupEmailForm(request.POST or None)
     context = {'form': form}
     if request.method == 'POST':
+        use_https = request.is_secure()
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
@@ -57,6 +56,7 @@ def signup_email(request):
             subject = 'Ative sua conta.'
             message = render_to_string('email/account_activation_email.html', {
                 'user': user,
+                'protocol': 'https' if use_https else 'http',
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
@@ -71,21 +71,21 @@ def account_activation_sent(request):
     return render(request, 'accounts/account_activation_sent.html')
 
 
-class PasswordResetConfirm(PasswordResetConfirmView):
+class MyPasswordResetConfirm(PasswordResetConfirmView):
 
     def form_valid(self, form):
         self.user.is_active = True
         self.user.save()
-        return super(PasswordResetConfirm, self).form_valid(form)
+        return super(MyPasswordResetConfirm, self).form_valid(form)
 
 
-class PasswordResetComplete(PasswordResetCompleteView):
+class MyPasswordResetComplete(PasswordResetCompleteView):
     ...
 
 
-class PasswordReset(PasswordResetView):
+class MyPasswordReset(PasswordResetView):
     ...
 
 
-class PasswordResetDone(PasswordResetDoneView):
+class MyPasswordResetDone(PasswordResetDoneView):
     ...
