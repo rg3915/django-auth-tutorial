@@ -2,6 +2,7 @@
 
 ```
 git clone https://github.com/rg3915/django-auth-tutorial.git
+cd django-auth-tutorial
 git branch base origin/base
 git checkout base
 
@@ -13,6 +14,7 @@ cat requirements.txt
 
 pip install -U pip
 pip install -r requirements.txt
+pip install ipdb
 
 python contrib/env_gen.py
 
