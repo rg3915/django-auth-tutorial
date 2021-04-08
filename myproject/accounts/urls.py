@@ -20,9 +20,9 @@ urlpatterns = [
     # path('signup/', v.SignUpView.as_view(), name='signup'),
     path('signup-email/', v.signup_email, name='signup_email'),
     path(
-        'account-activation-sent/',
-        v.account_activation_sent,
-        name='account_activation_sent'
+        'account-activation-done/',
+        v.account_activation_done,
+        name='account_activation_done'
     ),
     path(
         'password_change/',

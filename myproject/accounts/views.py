@@ -68,13 +68,13 @@ def signup_email(request):
             user.is_active = False
             user.save()
             send_mail_to_user(request, user)
-            return redirect('account_activation_sent')
+            return redirect('account_activation_done')
 
-    return render(request, 'accounts/signup_email.html', context)
+    return render(request, 'accounts/signup_email_form.html', context)
 
 
-def account_activation_sent(request):
-    return render(request, 'accounts/account_activation_sent.html')
+def account_activation_done(request):
+    return render(request, 'accounts/account_activation_done.html')
 
 
 class MyPasswordChange(PasswordChangeView):
@@ -87,6 +87,14 @@ class MyPasswordChangeDone(PasswordChangeDoneView):
         return redirect(reverse_lazy('login'))
 
 
+class MyPasswordReset(PasswordResetView):
+    ...
+
+
+class MyPasswordResetDone(PasswordResetDoneView):
+    ...
+
+
 class MyPasswordResetConfirm(PasswordResetConfirmView):
 
     def form_valid(self, form):
@@ -96,12 +104,4 @@ class MyPasswordResetConfirm(PasswordResetConfirmView):
 
 
 class MyPasswordResetComplete(PasswordResetCompleteView):
-    ...
-
-
-class MyPasswordReset(PasswordResetView):
-    ...
-
-
-class MyPasswordResetDone(PasswordResetDoneView):
     ...
