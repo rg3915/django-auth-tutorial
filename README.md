@@ -27,11 +27,19 @@ python manage.py createsuperuser --username='admin' --email=''
 
 ## Estrutura
 
+### Login
+
 ![101_login_logout.png](img/101_login_logout.png)
+
+### Cadastro
 
 ![102_signup.png](img/102_signup.png)
 
+### Trocar senha
+
 ![103_change_password.png](img/103_change_password.png)
+
+### Esqueci minha senha
 
 ![104_reset_password.png](img/104_reset_password.png)
 
@@ -39,11 +47,19 @@ python manage.py createsuperuser --username='admin' --email=''
 
 ## Telas
 
+### Login
+
 ![01_login.png](img/01_login.png)
+
+### Cadastro
 
 ![02_signup.png](img/02_signup.png)
 
+### Trocar senha
+
 ![03_change_password.png](img/03_change_password.png)
+
+### Esqueci minha senha
 
 ![04_forgot_password.png](img/04_forgot_password.png)
 
