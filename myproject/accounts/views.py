@@ -87,6 +87,9 @@ class MyPasswordChangeDone(PasswordChangeDoneView):
         return redirect(reverse_lazy('login'))
 
 
+# Requer
+# registration/password_reset_email.html
+# registration/password_reset_subject.txt
 class MyPasswordReset(PasswordResetView):
     ...
 
