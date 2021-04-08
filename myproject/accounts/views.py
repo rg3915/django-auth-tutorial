@@ -45,25 +45,29 @@ class SignUpView(CreateView):
     template_name = 'accounts/signup.html'
 
 
+def send_mail_to_user(request, user):
+    current_site = get_current_site(request)
+    use_https = request.is_secure()
+    subject = 'Ative sua conta.'
+    message = render_to_string('email/account_activation_email.html', {
+        'user': user,
+        'protocol': 'https' if use_https else 'http',
+        'domain': current_site.domain,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': account_activation_token.make_token(user),
+    })
+    user.email_user(subject, message)
+
+
 def signup_email(request):
     form = SignupEmailForm(request.POST or None)
     context = {'form': form}
     if request.method == 'POST':
-        use_https = request.is_secure()
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
             user.save()
-            current_site = get_current_site(request)
-            subject = 'Ative sua conta.'
-            message = render_to_string('email/account_activation_email.html', {
-                'user': user,
-                'protocol': 'https' if use_https else 'http',
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-            })
-            user.email_user(subject, message)
+            send_mail_to_user(request, user)
             return redirect('account_activation_sent')
 
     return render(request, 'accounts/signup_email.html', context)

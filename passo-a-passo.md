@@ -103,6 +103,24 @@ urlpatterns = [
 ]
 ```
 
+https://docs.djangoproject.com/en/3.1/ref/contrib/auth/#django.contrib.auth.models.UserManager.create_user
+
+```
+python manage.py shell_plus
+
+from django.contrib.auth.models import User
+
+user = User.objects.create_user(
+    username='regis', 
+    email='regis@email.com', 
+    password='demodemo',
+    first_name='Regis',
+    last_name='Santos',
+    is_active=True
+)
+
+```
+
 Editando accounts/login.html
 
 touch myproject/accounts/templates/accounts/login.html
