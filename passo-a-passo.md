@@ -73,13 +73,39 @@ LOGIN_REDIRECT_URL = 'core:index'
 LOGOUT_REDIRECT_URL = 'core:index'
 ```
 
-Estrutura do projeto
+## MailHog
+
+Rodar [MailHog](https://github.com/mailhog/MailHog) via Docker.
+
+```
+docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
+```
+
+
+## Estrutura do projeto
 
 ```
 tree
 ```
 
-Agora veja as imagens em [README.md](README.md).
+## Telas
+
+### Login
+
+![01_login.png](img/01_login.png)
+
+### Cadastro
+
+![02_signup.png](img/02_signup.png)
+
+### Trocar senha
+
+![03_change_password.png](img/03_change_password.png)
+
+### Esqueci minha senha
+
+![04_forgot_password.png](img/04_forgot_password.png)
+
 
 Criando alguns arquivos
 
@@ -229,6 +255,8 @@ Editando `accounts/urls.py`
 ```
 
 Editando `accounts/tokens.py`
+
+https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
 
 ```
 touch myproject/accounts/tokens.py
@@ -452,6 +480,7 @@ href="{% url 'login' %}
 
 > Mostrar a aplicação rodando com **cadastro normal** e **cadastro com senha.**
 
+### Trocar senha
 
 ![103_change_password.png](img/103_change_password.png)
 
@@ -495,6 +524,8 @@ Arrumar o link em `nav.html`
 ```html
 <a class="nav-link" href="{% url 'password_change' %}">Trocar a senha</a>
 ```
+
+### Esqueci minha senha
 
 ![104_reset_password.png](img/104_reset_password.png)
 

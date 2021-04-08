@@ -43,6 +43,7 @@ LOGIN_REDIRECT_URL = 'core:index'
 LOGOUT_REDIRECT_URL = 'core:index'
 ```
 
+Leia o [passo-a-passo.md](passo-a-passo.md).
 
 
 ## Estrutura
