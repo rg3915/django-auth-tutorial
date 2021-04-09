@@ -2,8 +2,6 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-# from myproject.accounts.models import UserProfile
-
 
 class SignupForm(UserCreationForm):
     first_name = forms.CharField(
@@ -19,13 +17,16 @@ class SignupForm(UserCreationForm):
         max_length=254,
         help_text='Requerido. Informe um e-mail válido.',
     )
-    # cpf = forms.CharField(label='CPF')
+    cpf = forms.CharField(label='CPF')
+    rg = forms.CharField(label='RG', required=False)
 
     class Meta:
         model = User
         fields = (
             'first_name',
             'last_name',
+            'cpf',
+            'rg',
             'username',
             'email',
             'password1',
@@ -47,12 +48,16 @@ class SignupEmailForm(forms.ModelForm):
         max_length=254,
         help_text='Requerido. Informe um e-mail válido.',
     )
+    cpf = forms.CharField(label='CPF')
+    rg = forms.CharField(label='RG', required=False)
 
     class Meta:
         model = User
         fields = (
             'first_name',
             'last_name',
+            'cpf',
+            'rg',
             'username',
             'email',
         )
