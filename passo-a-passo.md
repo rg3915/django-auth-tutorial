@@ -812,3 +812,10 @@ def signup_email(request):
     return render(request, 'accounts/signup_email_form.html', context)
 
 ```
+
+Corrigindo o erro `RelatedObjectDoesNotExist at /admin/login/ User has no profile`
+
+```
+user = User.objects.get(username='admin')
+Profile.objects.create(user=user)
+```
