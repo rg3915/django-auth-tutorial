@@ -176,6 +176,8 @@ https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.v
 
 https://github.com/django/django/blob/main/django/contrib/auth/views.py#L40
 
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.LogoutView
+
 Editando `accounts/urls.py`
 
 ```
@@ -209,6 +211,13 @@ urlpatterns = [
 
 Em `core/views.py` descomente `@login_required`.
 
+
+Em `settings.py` descomente
+
+```python
+LOGIN_URL = 'login'
+```
+
 Em `myproject/urls.py` descomente
 
 ```
@@ -224,11 +233,6 @@ Em `nav.html` corrija
 href="{% url 'logout' %}">Logout</a>
 ```
 
-Em `settings.py` descomente
-
-```python
-LOGIN_URL = 'login'
-```
 
 
 > Mostrar a aplicação rodando com login e logout.
@@ -238,7 +242,15 @@ LOGIN_URL = 'login'
 
 ![102_signup.png](img/102_signup.png)
 
+https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html#basic-sign-up
 
+https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html#sign-up-with-confirmation-mail
+
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.PasswordResetConfirmView
+
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.PasswordResetCompleteView
+
+https://github.com/django/django/blob/main/django/contrib/auth/urls.py#L18
 
 Editando `accounts/urls.py`
 
@@ -392,6 +404,8 @@ class MyPasswordResetComplete(PasswordResetCompleteView):
     ...
 ```
 
+https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L75
+
 Editando `accounts/forms.py`
 
 ```
@@ -496,6 +510,13 @@ href="{% url 'login' %}
 
 ![103_change_password.png](img/103_change_password.png)
 
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.PasswordChangeView
+
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.PasswordChangeDoneView
+
+https://github.com/django/django/blob/main/django/contrib/auth/views.py#L334
+
+https://github.com/django/django/blob/main/django/views/generic/base.py#L157
 
 Em `accounts/views.py`
 
@@ -540,6 +561,19 @@ Arrumar o link em `nav.html`
 ### Esqueci minha senha
 
 ![104_reset_password.png](img/104_reset_password.png)
+
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.PasswordResetView
+
+https://github.com/django/django/blob/main/django/contrib/auth/views.py#L212
+
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.views.PasswordResetDoneView
+
+https://docs.djangoproject.com/en/3.1/topics/auth/default/#django.contrib.auth.forms.PasswordResetForm
+
+https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L238
+
+https://github.com/django/django/blob/main/django/contrib/auth/urls.py
+
 
 Em `accounts/views.py`
 
@@ -613,6 +647,8 @@ Arrumar o link em `registration/password_reset_email.html`
 ---
 
 Falar de `include('django.contrib.auth.urls')` include em `urls.py`
+
+https://github.com/django/django/blob/main/django/contrib/auth/urls.py
 
 ```python
 # urls.py
