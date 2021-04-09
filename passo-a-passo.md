@@ -168,6 +168,9 @@ def index(request):
     return render(request, template_name)
 ```
 
+> Rodar a aplicação.
+
+
 ### Login
 
 ![101_login_logout.png](img/101_login_logout.png)
