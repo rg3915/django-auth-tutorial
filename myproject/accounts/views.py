@@ -25,15 +25,23 @@ def signup(request):
     context = {'form': form}
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.is_active = True
+            user.save()  # precisa salvar para rodar o signal.
+            # carrega a instância do perfil criada pelo signal.
+            user.refresh_from_db()
+            user.profile.cpf = form.cleaned_data.get('cpf')
+            user.profile.rg = form.cleaned_data.get('rg')
+            user.save()
+
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
 
             # Autentica usuário
-            user = authenticate(username=username, password=raw_password)
+            user_auth = authenticate(username=username, password=raw_password)
 
             # Faz login
-            auth_login(request, user)
+            auth_login(request, user_auth)
             return redirect(reverse_lazy('core:index'))
 
     return render(request, 'accounts/signup.html', context)
@@ -66,6 +74,11 @@ def signup_email(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
+            user.save()  # precisa salvar para rodar o signal.
+            # carrega a instância do perfil criada pelo signal.
+            user.refresh_from_db()
+            user.profile.cpf = form.cleaned_data.get('cpf')
+            user.profile.rg = form.cleaned_data.get('rg')
             user.save()
             send_mail_to_user(request, user)
             return redirect('account_activation_done')

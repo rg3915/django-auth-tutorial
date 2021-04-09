@@ -675,3 +675,140 @@ urlpatterns = [
     # path('', include('django.contrib.auth.urls')),  # sem namespace
 ]
 ```
+
+---
+
+## Perfil
+
+```python
+# accounts/models.py
+from django.contrib.auth.models import User
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
+class Profile(models.Model):
+    cpf = models.CharField('CPF', max_length=11, unique=True, null=True, blank=True)  # noqa E501
+    rg = models.CharField('RG', max_length=20, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('cpf',)
+        verbose_name = 'perfil'
+        verbose_name_plural = 'perfis'
+
+    def __str__(self):
+        if self.cpf:
+            return self.cpf
+        return self.user.username
+
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
+
+```
+
+
+```python
+# accounts/forms.py
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+
+class SignupForm(UserCreationForm):
+    ...
+    cpf = forms.CharField(label='CPF')
+    rg = forms.CharField(label='RG', required=False)
+
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+            'cpf',
+            'rg',
+            'username',
+            'email',
+            'password1',
+            'password2'
+        )
+
+
+class SignupEmailForm(forms.ModelForm):
+    ...
+    cpf = forms.CharField(label='CPF')
+    rg = forms.CharField(label='RG', required=False)
+
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+            'cpf',
+            'rg',
+            'username',
+            'email',
+        )
+```
+
+```python
+# accounts/admin.py
+from django.contrib import admin
+
+from .models import Profile
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'cpf', 'rg')
+```
+
+```python
+# accounts/views.py
+def signup(request):
+        ...
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_active = True
+            user.save()  # precisa salvar para rodar o signal.
+            # carrega a instância do perfil criada pelo signal.
+            user.refresh_from_db()
+            user.profile.cpf = form.cleaned_data.get('cpf')
+            user.profile.rg = form.cleaned_data.get('rg')
+            user.save()
+
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+
+            # Autentica usuário
+            user_auth = authenticate(username=username, password=raw_password)
+
+            # Faz login
+            auth_login(request, user_auth)
+            return redirect(reverse_lazy('core:index'))
+
+    return render(request, 'accounts/signup.html', context)
+
+
+def signup_email(request):
+        ...
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_active = False
+            user.save()  # precisa salvar para rodar o signal.
+            # carrega a instância do perfil criada pelo signal.
+            user.refresh_from_db()
+            user.profile.cpf = form.cleaned_data.get('cpf')
+            user.profile.rg = form.cleaned_data.get('rg')
+            user.save()
+            send_mail_to_user(request, user)
+            return redirect('account_activation_done')
+
+    return render(request, 'accounts/signup_email_form.html', context)
+
+```
