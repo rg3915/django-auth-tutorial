@@ -506,8 +506,21 @@ Arrumar o link em `registration/password_reset_complete.html`
 href="{% url 'login' %}
 ```
 
+Renomear a pasta `registration` para `temp`.
+
+```
+mv myproject/accounts/templates/registration myproject/accounts/templates/temp
+```
+
 
 > Mostrar a aplicação rodando com **cadastro normal** e **cadastro com senha.**
+
+Renomear a pasta `temp` para `registration`.
+
+```
+mv myproject/accounts/templates/temp myproject/accounts/templates/registration
+```
+
 
 ### Trocar senha
 
