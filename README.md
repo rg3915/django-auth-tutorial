@@ -1,5 +1,18 @@
 # Guia de autenticação com Django
 
+Live parte 1
+
+<a href="https://youtu.be/WBV6X9eznNY">
+    <img src="img/youtube.png">
+</a>
+
+Live parte 2
+
+<a href="https://youtu.be/H68IJwCxgwg">
+    <img src="img/youtube.png">
+</a>
+
+
 ## Este projeto foi feito com:
 
 * [Python 3.8.2](https://www.python.org/)
