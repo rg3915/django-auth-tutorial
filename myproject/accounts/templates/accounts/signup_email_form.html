@@ -16,6 +16,7 @@
           {% csrf_token %}
           {% for field in form.visible_fields %}
             <div class="form-group{% if field.errors %} has-error {% endif %}">
+              <label>
                 {% if field.field.required %}
                   <span class="required">{{ field.label }} </span>
                 {% else %}
