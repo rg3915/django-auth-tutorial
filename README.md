@@ -16,7 +16,7 @@ Live parte 2
 ## Este projeto foi feito com:
 
 * [Python 3.8.2](https://www.python.org/)
-* [Django 3.1.8](https://www.djangoproject.com/)
+* [Django 4.0.*](https://www.djangoproject.com/)
 * [Bootstrap 4.0](https://getbootstrap.com/)
 
 ## Como rodar o projeto?
